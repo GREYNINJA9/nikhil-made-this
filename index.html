@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="formContainer">
+        <h1>Enter your details</h1>
+        <form id="wishForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="number" id="age" placeholder="Your Age" required>
+            <input type="text" id="wish" placeholder="Your Wish" required>
+            <button type="submit">Generate Link</button>
+        </form>
+        <div id="linkContainer" style="display:none;">
+            <p>Copy your link:</p>
+            <input type="text" id="generatedLink" readonly>
+            <button onclick="copyLink()">Copy</button>
+        </div>
+    </div>
+
+    <div id="celebration" style="display:none;">
+        <div class="cake">
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+            <h2 id="displayName"></h2>
+            <p id="displayAge"></p>
+            <p id="displayWish"></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
