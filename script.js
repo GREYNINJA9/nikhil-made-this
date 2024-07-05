@@ -37,11 +37,16 @@ function displayCelebration() {
     }
 }
 
-function blowOutCandle() {
-    const flame = document.querySelector('.flame');
-    if (flame) {
+function blowOutCandles() {
+    const flames = document.querySelectorAll('.flame');
+    flames.forEach(flame => {
         gsap.to(flame, { opacity: 0, duration: 1, onComplete: () => flame.style.display = 'none' });
-    }
+    });
+    setTimeout(() => {
+        document.querySelectorAll('.candle').forEach(candle => {
+            candle.innerHTML = '';
+        });
+    }, 1000);
 }
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -56,7 +61,7 @@ recognition.addEventListener('result', e => {
         .join('');
 
     if (transcript.toLowerCase().includes('blow out the candles') || e.results[0].isFinal) {
-        blowOutCandle();
+        blowOutCandles();
     }
 });
 
