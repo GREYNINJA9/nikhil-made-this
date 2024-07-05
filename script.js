@@ -46,7 +46,34 @@ function blowOutCandles() {
         document.querySelectorAll('.candle').forEach(candle => {
             candle.innerHTML = '';
         });
+        showWishAndSparkles();
     }, 1000);
+}
+
+function showWishAndSparkles() {
+    document.getElementById('displayWish').style.display = 'block';
+    document.getElementById('sparkles').style.display = 'block';
+    createSparkles();
+}
+
+function createSparkles() {
+    const sparklesContainer = document.getElementById('sparkles');
+    for (let i = 0; i < 100; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparklesContainer.appendChild(sparkle);
+
+        gsap.fromTo(sparkle, {
+            opacity: 1,
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight
+        }, {
+            opacity: 0,
+            duration: 2,
+            delay: Math.random() * 2,
+            onComplete: () => sparklesContainer.removeChild(sparkle)
+        });
+    }
 }
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
